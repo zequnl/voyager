@@ -1,12 +1,3 @@
-
-/**
- * @file    voyager.cpp
- * @author  zequnl
- * @brief DESCRIPTION
- * Main file for the package voyager
- *
- */
-
 #include <hector_uav_msgs/EnableMotors.h>
 #include <ros/ros.h>
 #include <std_msgs/String.h>
