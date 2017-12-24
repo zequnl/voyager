@@ -1,38 +1,9 @@
-# Voyager: Explore the environment!
-[![Build Status](https://travis-ci.org/nr-parikh/voyager.svg?branch=master)](https://travis-ci.org/nr-parikh/voyager)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/nr-parikh/voyager/blob/master/LICENSE)
-
-## Contents 
-* [Overview](#overview) 
-* [Robot description](#description)
-* [Algorithm](#algorithm) 
-* [Dependencies](#dependencies)
+* [编译环境](#dependencies)
 * [Building the code](#building)
 	* [Installing dependencies](#install-dependencies)
 	* [Building the project](#build-project)
 * [Running](#running)
-* [Testing](#testing)
-* [Documentation](#docs) 
-* [SIP process](#sip)
-* [Presentation](#present)
-* [License](#lic) 
-
-## <a name="overview"></a> Overview 
-Unmanned aerial vehicles(UAV) are becoming ubiquitous in recent times. As their usage increases they need to be able to know their surrounding and be able to perceive their surroundings. There are numerous applications of UAVs like agricultural mapping, delivery systems, surveillance etc. In almost most of the
-applications exploring the environment and creating a map of it to localize itself is the key part to perceive the surroundings. 
-
-For a unmanned ground vehicles it is not a problem to have a 2-D occupancy grid but in case of UAVs it becomes mandatory to have a 3-D map of the environment. The trajectory planning of a UAVs needs a 3-D map to have a good trajectory rather than an occupancy grid. In this project, a quadrotor vehicle for security surveillance/exploring the environment. The quadrotor will be able to create a map of the environment it is in while exploring the environment. This package has a simulated robot which can explore the environment and map it without colliding with the obstacles that might be present in the surrounding. 
-
-## <a name="description"></a> Robot description 
-The quadrotor is a generic unmanned aerial vehicle of X-configuration. The robot has a laser scanner which it can use to perceive the environment around it. The task for the robot is to explore the environment and generate the map of it. The robot also has a front facing which can be used for various purposes. For the purpose of safety, the motors of the robot can be disabled with a kill switch. 
-
-The simulated robot used in this package is from [Hector quadrotor](http://wiki.ros.org/hector_quadrotor) family of the packages by TU Darmstadt. It has a Hokuyo laser scanner which is mounted at the bottom of the robot. This laser scanner is used for detecting the presence of obstacles in the surrounding of the robot. Hector quadrotor also an Asus camera that has an ability to produce point clouds. In this project, the front facing camera of the robot is used to create a 3D map of the environment. The point cloud obtained from the camera is given to the [Octomap](http://wiki.ros.org/octomap) algorithm which creates a map of the environment. To monitor the height, the robot has a sonar sensor. The robot has a service `/enable_motors` that can be used to disarm the motors in cases of emergency. 
-
-## <a name="algorithm"></a> Algorithm 
-The algorithm used in this package is very naive. The robot has to explore the world without colliding with the environment. In order to check of the collision, the algorithm uses a readings from laser scanner. Since laser scanner gives the readings from all the directions and the readings of interest are only that occur in the from, the algorithm prunes the unnecessary data and then checks for presence of obstacle in that filtered data. If the obstacle is present then robot keeps rotating until it finds a free way to move and if there is no obstacle then it will keep moving forward. In order, to check the height of the robot from the ground it uses the readings from the sonar sensors. The algorithm constantly monitors the height of the robot and tries to maintain it to some constant value. If it goes below the threshold it thrusts up and it goes above the threshold it will try to go down. 
-
-## <a name="dependencies"></a> Dependencies
-The dependencies of this project are as given below:
+## <a name="dependencies"></a> 编译环境
 * Ubuntu 16.04
 * ROS Kinetic Kame 
 * Catkin
