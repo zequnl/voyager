@@ -50,38 +50,3 @@ add_dependencies(${PROJECT_NAME}_node ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(${PROJECT_NAME}_node
    ${catkin_LIBRARIES}
 )
-
-#############
-## Testing ##
-#############
-
-if(CATKIN_ENABLE_TESTING)
-  find_package(rostest REQUIRED)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 --coverage")
-
-  add_rostest_gtest(
-    voyager_test
-    launch/test_voyager.launch
-    test/test_${PROJECT_NAME}_node.cpp
-    test/test_laser_scan.cpp
-    test/test_planner.cpp
-    test/test_quadrotor.cpp
-    test/test_voyager.cpp
-    src/laser_scan.cpp
-    src/planner.cpp
-    src/quadrotor.cpp
-
-  )
-
-  target_link_libraries(
-    voyager_test
-    ${catkin_LIBRARIES}
-  )
-
-  add_dependencies(
-    voyager_test
-    ${PROJECT_NAME}_node
-    ${${PROJECT_NAME}_EXPORTED_TARGETS}
-    ${catkin_EXPORTED_TARGETS}
-  )
-endif()
