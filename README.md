@@ -1,3 +1,4 @@
+# 环境探测机器人
 * [编译环境](#dependencies)
 * [编译](#building)
 * [运行](#running)
@@ -44,10 +45,12 @@ $ sudo apt-get install ros-kinetic-octovis
 ```
 $ sudo apt-get install ros-kinetic-teleop-twist-keyboard
 ```
+将文件夹https://github.com/loicdubois/pdm_crazyflie/tree/master/catkin_old/devel/include/hector_uav_msgs 下载到catkin_ws/devel/include中
 编译整个工程
 ```
 $ cd ..
 $ catkin_make
+$ source devel/setup.bash
 ```
 
 ## <a name="running"></a> 运行 
